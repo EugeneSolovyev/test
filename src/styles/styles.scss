@@ -1,0 +1,42 @@
+$blue: #0c5386;
+$white: rgba(255,255,255,1);
+$twoEm: 2em;
+@mixin white-blue ($_bg, $_color) {
+	background: $_bg;
+	color: $_color;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.parent {
+	background: $blue;
+	padding: $twoEm;
+	.parent__header {
+		@include white-blue($blue, $white);
+	}
+	.parent__text {
+		color: darken($white, 0%);
+		background: adjust_hue($blue, 180deg);
+	}
+	.parent__button {
+		background: $white;
+		border: none;
+		border-radius: 5px;
+		box-shadow: 2px 3px 10px rgba(0,0,0,.5);
+	}
+	.parent__button__little {
+		width: calc(4em + 5px);
+		height: auto;
+		margin-top: $twoEm;
+		padding: .5em;
+	}
+	.child {
+		border: 1px solid $white;
+		padding: $twoEm;
+		margin: 1em 0 0 0;
+		font-size: 1.2em;
+	}
+}
